@@ -161,69 +161,103 @@ public static int pow(int x, int n) {
 	}
 
 	public static int div(int x1, int x2) {
-		if (x2 == 0) {
-			return 0;
-		}
-		if (x1 == 0) {
-			return 0;
-		}
-			boolean neg = false;
-			if (x1 < 0) {
-				x1 = minus(0, x1);
-				neg =! neg;
-			}
-			if (x2 < 0) {
-				x2 = minus(0, x2);
-				neg =! neg;
-			}
-			int count = 0;
-			while (x1 >= x2) {
-				x1 = minus(x1, x2);
-				count++;
-			}
-			if (neg) {
-                count = minus(0, count);
-			}
-		return count;
-	}
+    if (x2 == 0) return 0;
+    if (x1 == 0) return 0;
+
+    boolean negative = false;
+
+    int absX1 = 0;
+    if (x1 < 0) {
+        negative = !negative;
+        while (x1 < 0) {
+            x1++;
+            absX1++;
+        }
+    } else {
+        absX1 = x1;
+    }
+
+    int absX2 = 0;
+    if (x2 < 0) {
+        negative = !negative;
+        while (x2 < 0) {
+            x2++;
+            absX2++;
+        }
+    } else {
+        absX2 = x2;
+    }
+
+    int count = 0;
+    while (absX1 >= absX2) {
+        absX1 = minus(absX1, absX2);
+        count++;
+    }
+
+    if (negative) {
+        int neg = 0;
+        int i = 0;
+        while (i < count) {
+            neg--;
+            i++;
+        }
+        return neg;
+    }
+
+    return count;
+}
 
 	public static int mod(int x1, int x2) {
-	if (x2 == 0){
-		return 0;
-	}
-	if (x1 == 0){
-		return 0;
-	}
-	boolean negg = false;
-	if (x1 < 0) {
-		x1 = minus(0, x1);
-		negg =! negg;
-	}
-	int negx2;
-	if (x2 < 0) {
-		negx2 = minus(0, x1);
-	} else {
-			negx2 = x2;
-		}
-		while (x1 >= negx2) {
-			minus(x1, negx2);
-		}
-		if (negg) {
-			minus(0, x1);
-		}
-		return x1;
-	}
+    if (x2 == 0) return 0;
+    if (x1 == 0) return 0;
 
-	public static int sqrt(int x) {
-		if (x <= 0) {
-			return 0;
-		}
-		int num = 0;
+    int absX1 = 0;
+    if (x1 < 0) {
+        while (x1 < 0) {
+            x1++;
+            absX1++;
+        }
+    } else {
+        absX1 = x1;
+    }
 
-while (times(num, num) <= x) {
-	num++;
-	
+    int absX2 = 0;
+    if (x2 < 0) {
+        while (x2 < 0) {
+            x2++;
+            absX2++;
+        }
+    } else {
+        absX2 = x2;
+    }
+
+    while (absX1 >= absX2) {
+        absX1 = minus(absX1, absX2);
+    }
+
+    if (x1 < 0) {
+        int neg = 0;
+        int i = 0;
+        while (i < absX1) {
+            neg--;
+            i++;
+        }
+        return neg;
+    }
+
+    return absX1;
 }
-		return minus(num, 1);
-	}	  	  
+
+
+public static int sqrt(int x) {
+    if (x <= 0) return 0;
+
+    int num = 0;
+
+    while (times(num, num) <= x) {
+        num++;
+    }
+
+    return minus(num, 1);
 }
+
