@@ -103,17 +103,26 @@ public class Algebra {
 
     int a = x1;
     if (a < 0) {
-        a = minus(0, a);
+        int tmp = 0;
+        while (a < 0) {
+            a++;   
+            tmp++; 
+        }
+        a = tmp;
     }
 
     int b = x2;
     if (b < 0) {
-        b = minus(0, b);
+        int tmp = 0;
+        while (b < 0) {
+            b++;
+            tmp++;
+        }
+        b = tmp;
     }
 
     int res = 0;
     int i = 0;
-
     while (i < b) {
         res = plus(res, a);
         i++;
