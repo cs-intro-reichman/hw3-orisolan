@@ -95,34 +95,29 @@ public class Algebra {
 		if (x1 == 0 || x2 == 0) {
 			return 0;
 		}
+		boolean resultIsNegative = false;
+    if ((x1 < 0 && x2 > 0) || (x1 > 0 && x2 < 0)) {
+        resultIsNegative = true;
+    }
+	int absX1 = x1;
+    if (x1 < 0) {
+        absX1 = minus(0, x1); 
+	}
+	int absX2 = x2;
+    if (x2 < 0) {
+        absX2 = minus(0, x2);
+    }
 		int i = 0;
 		int res = 0;
-		if ( x1 > 0 && x2 > 0) {
-		while ( i < x2) {
-		res = plus(x1,res);	
-		i++;
-		}
-	}
-	if ( x1 < 0 && x2 < 0) {
-		x1 = minus(0,x1);
-		x2 = minus(0,x2);
-	while ( i < x2) {
-		res = plus(x1,res);	
-		i++;	
-		}
-	}
-	if ( x1 < 0 && x2 > 0) {
-	while ( i < x2) {
-		res = plus(x1,res);	
-		i++;	
-		}
-	}
-	if (x1 > 0 && x2 < 0) {
-	while ( i < x1) {
-		res = plus(x2,res);	
-		i++;	
-		}
-	}
+
+		while (i < absX2) { 
+        res = plus(res, absX1);
+        i++;
+    }
+	if (resultIsNegative) {
+        return minus(0, res); 
+    }
+		
 		return res;
 	}
 
