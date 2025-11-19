@@ -52,3 +52,47 @@ public class LoanCalc {
 		return 0;
     }
 }
+if (x1 == 0 || x2 == 0) {
+			return 0;
+		}
+		boolean resultIsNegative = false;
+    if ((x1 < 0 && x2 > 0) || (x1 > 0 && x2 < 0)) {
+        resultIsNegative = true;
+    }
+	int absX1 = x1;
+    if (x1 < 0) {
+        absX1 = minus(0, x1); 
+	}
+	int absX2 = x2;
+    if (x2 < 0) {
+        absX2 = minus(0, x2);
+    }
+		int i = 0;
+		int res = 0;
+
+		while (i < absX2) { 
+        res = plus(res, absX1);
+        i++;
+    }
+	if (resultIsNegative) {
+        return minus(0, res); 
+    }
+		
+		return res;
+	}
+
+	public static int pow(int x, int n) {
+	if (n == 0) {
+		return 1;
+	}
+	if (x == 0) {
+		return 0;	
+	}	
+	int res = 1;
+	int i = 0;
+	while (i < n) {
+		res = times(res, x);
+		i++;
+		}
+		return res;
+	}
