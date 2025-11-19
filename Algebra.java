@@ -102,38 +102,47 @@ public class Algebra {
     if (x2 < 0) negative = !negative;
 
     int a = x1;
+    int absA = 0;
     if (a < 0) {
-        int tmp = 0;
         while (a < 0) {
-            a++;   
-            tmp++; 
+            a++;     
+            absA++;   
         }
-        a = tmp;
+    } else {
+        absA = a;
     }
 
     int b = x2;
+    int absB = 0;
     if (b < 0) {
-        int tmp = 0;
         while (b < 0) {
             b++;
-            tmp++;
+            absB++;
         }
-        b = tmp;
+    } else {
+        absB = b;
     }
 
     int res = 0;
     int i = 0;
-    while (i < b) {
-        res = plus(res, a);
+    while (i < absB) {
+        res = plus(res, absA);
         i++;
     }
 
     if (negative) {
-        return minus(0, res);
+        int negRes = 0;
+        int j = 0;
+        while (j < res) {  
+            negRes--;      
+            j++;
+        }
+        return negRes;
     }
 
     return res;
 }
+
 
 public static int pow(int x, int n) {
 	if (n == 0) {
