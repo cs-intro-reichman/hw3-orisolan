@@ -104,7 +104,9 @@ public class Algebra {
 		}
 	}
 	if ( x1 < 0 && x2 < 0) {
-	while ( i >= x2) {
+		x1 = minus(0,x1);
+		x2 = minus(0,x2);
+	while ( i < x2) {
 		res = plus(x1,res);	
 		i++;	
 		}
@@ -115,7 +117,7 @@ public class Algebra {
 		i++;	
 		}
 	}
-	else {
+	if (x1 > 0 && x2 < 0) {
 	while ( i < x1) {
 		res = plus(x2,res);	
 		i++;	
