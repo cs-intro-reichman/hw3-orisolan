@@ -19,7 +19,7 @@ public class Algebra {
 
 	public static int plus(int x1, int x2) {
 		if (x1 == 0) {
-			return x2;
+			return x2; 
 		}
 		if (x2 == 0) {
 			return x1;
