@@ -127,7 +127,7 @@ public class Algebra {
     int i = 0;
     while (i < absB) {
         res = plus(res, absA);
-        i++;
+        i++; 
     }
 
     if (negative) {
