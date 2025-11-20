@@ -33,14 +33,14 @@ public class Anagram {
 		boolean check = str1.length() == str2.length();
 		int i =0;
 		while (0 < str1.length() && check) {
-			char l1 = str1.charAt(index: 0);
+			char l1 = str1.charAt(0);
 			i = 0;
 			while (i < str2.length() && l1 != str2.charAt(i)) {
 				i++;
 			}
 			if (i < str2.length()) {
-				str1 = str1.substring(beginIndex: 1, str1.length());
-				str2 = str2.substring(beginIndex: 0, i) + str2.substring(i + 1, str2.length());
+				str1 = str1.substring(1, str1.length());
+				str2 = str2.substring(0, i) + str2.substring(i + 1, str2.length());
 				check = true;
 			} else {
 				check = false;
@@ -73,7 +73,7 @@ public class Anagram {
 		while (str.length() > 1) {
 			i = (int)  (Math.random() * str.length());
 			nstr = nstr + str.charAt(i);
-			str = str.substring(beginIndex: 0,i) + str.substring(i + 1, str.length());
+			str = str.substring(0,i) + str.substring(i + 1, str.length());
 		}
 		return nstr + str;
 	}
